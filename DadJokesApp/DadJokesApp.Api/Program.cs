@@ -7,6 +7,13 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddHttpClient("DadJokeClient", client =>
+{
+    client.BaseAddress = new Uri("https://icanhazdadjoke.com/");
+    client.DefaultRequestHeaders.Add("Accept", "application/json");
+    client.DefaultRequestHeaders.Add("User-Agent", "DadJokesApp (https://github.com/rwu864/degreed_take_home)");
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
