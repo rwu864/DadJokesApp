@@ -1,4 +1,5 @@
-﻿using DadJokesApp.Api.Externals.icanhazdadjoke;
+﻿using DadJokesApp.Api.Extensions;
+using DadJokesApp.Api.Externals.icanhazdadjoke;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DadJokesApp.Api.Controllers;
@@ -14,7 +15,7 @@ public class JokesController
     [HttpGet("random")]
     public async Task<ActionResult<string>> GetRandomJoke()
     {
-        var client = httpClientFactory.CreateClient("DadJokeClient");
+        var client = httpClientFactory.CreateCanHazDadJokeHttpClient();
 
         var response = await client.GetAsync("/");
         
