@@ -8,7 +8,7 @@ namespace DadJokesApp.Api.Controllers;
 public class JokesController 
 (
     IHttpClientFactory httpClientFactory,
-     ILogger<JokesController> logger
+    ILogger<JokesController> logger
 ) : ControllerBase
 {
     [HttpGet("random")]

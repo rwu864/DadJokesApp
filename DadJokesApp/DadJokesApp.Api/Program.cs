@@ -1,3 +1,5 @@
+using DadJokesApp.Api.Extensions;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,12 +9,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddHttpClient("DadJokeClient", client =>
-{
-    client.BaseAddress = new Uri("https://icanhazdadjoke.com/");
-    client.DefaultRequestHeaders.Add("Accept", "application/json");
-    client.DefaultRequestHeaders.Add("User-Agent", "DadJokesApp (https://github.com/rwu864/degreed_take_home)");
-});
+builder.Services.AddCanHazDadJokeHttpClient(builder.Configuration);
 
 var app = builder.Build();
 
