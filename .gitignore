@@ -55,3 +55,4 @@ nunit-*.xml
 /.vs
 /DadJokesApp/.vs/DadJokesApp
 /DadJokesApp/DadJokesApp.slnLaunch.user
+/DadJokesApp/DadJokesApp.Api/DadJokesApp.Api.csproj.user
