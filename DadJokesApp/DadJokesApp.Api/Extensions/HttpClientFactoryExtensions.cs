@@ -1,4 +1,4 @@
-﻿using DadJokesApp.Api.Configuration;
+﻿using DadJokesApp.Api.Configurations;
 
 namespace DadJokesApp.Api.Extensions;
 

@@ -1,4 +1,4 @@
-﻿namespace DadJokesApp.Api.Configuration
+﻿namespace DadJokesApp.Api.Configurations
 {
     public class CanHazDadJokeOptions
     {

@@ -1,4 +1,5 @@
-﻿using DadJokesApp.Api.Configuration;
+﻿using DadJokesApp.Api.Configurations;
+using DadJokesApp.Api.Services;
 
 namespace DadJokesApp.Api.Extensions;
 public static class ServiceCollectionExtensions
@@ -19,6 +20,12 @@ public static class ServiceCollectionExtensions
             client.DefaultRequestHeaders.Add("User-Agent", options.UserAgent);
         });
 
+        return services;
+    }
+
+    public static IServiceCollection AddJokeService(this IServiceCollection services)
+    {
+        services.AddScoped<IJokeService, JokeService>();
         return services;
     }
 }

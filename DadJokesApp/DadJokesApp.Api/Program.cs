@@ -10,6 +10,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddCanHazDadJokeHttpClient(builder.Configuration);
+builder.Services.AddJokeService();
 
 var app = builder.Build();
 
