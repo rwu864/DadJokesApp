@@ -1,4 +1,4 @@
-﻿using DadJokesApp.Api.Models;
+﻿using DadJokesApp.Api.Externals.icanhazdadjoke;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DadJokesApp.Api.Controllers;
@@ -24,7 +24,7 @@ public class JokesController
             return JokeServiceError();
         }
 
-        var joke = await response.Content.ReadFromJsonAsync<DadJokeDto>();
+        var joke = await response.Content.ReadFromJsonAsync<RandomDadJokeResult>();
 
         if (joke == null || string.IsNullOrWhiteSpace(joke.Joke))
         {
