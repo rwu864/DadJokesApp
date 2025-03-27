@@ -17,7 +17,7 @@ public class JokesController (IJokeService jokeService) : ControllerBase
 
         return Ok(serviceResult.Value);
     }
-
+    
 
     private ActionResult JokeServiceError(string? errorMessage = "Unable to fetch a joke at this time.") 
         => Problem

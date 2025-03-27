@@ -57,3 +57,4 @@ nunit-*.xml
 /DadJokesApp/DadJokesApp.slnLaunch.user
 /DadJokesApp/DadJokesApp.Api/DadJokesApp.Api.csproj.user
 /DadJokesApp/.vs/ProjectEvaluation
+/DadJokesApp/DadJokesApp.Web/DadJokesApp.Web.csproj.user

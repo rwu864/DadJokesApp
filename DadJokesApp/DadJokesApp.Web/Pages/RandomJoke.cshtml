@@ -1,0 +1,16 @@
+﻿@page
+@model DadJokesApp.Web.Pages.RandomJokeModel
+@{
+    ViewData["Title"] = "Random Joke";
+}
+
+<h2>Random Dad Joke</h2>
+
+@if (Model.Joke is not null)
+{
+    <p>@Model.Joke</p>
+}
+else
+{
+    <p><em>Loading...</em></p>
+}
