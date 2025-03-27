@@ -12,6 +12,18 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddCanHazDadJokeHttpClient(builder.Configuration);
 builder.Services.AddJokeService();
 
+const string allowDevApp = "devApp";
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: allowDevApp,
+        policy =>
+        {
+            policy.WithOrigins("https://localhost:7165")
+                  .AllowAnyHeader()
+                  .AllowAnyMethod();
+        });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -19,6 +31,7 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    app.UseCors(allowDevApp);
 }
 
 app.UseHttpsRedirection();
