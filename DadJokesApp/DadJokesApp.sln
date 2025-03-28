@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DadJokesApp.Api", "DadJokes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DadJokesApp.Web", "DadJokesApp.Web\DadJokesApp.Web.csproj", "{6B309DBB-EB87-41A1-87C9-DA775D9E8D0C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DadJokesApp.Api.Tests", "DadJokesApp.Api.Tests\DadJokesApp.Api.Tests.csproj", "{67622223-7828-44E0-9F4D-5DB809ECD1D1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{6B309DBB-EB87-41A1-87C9-DA775D9E8D0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6B309DBB-EB87-41A1-87C9-DA775D9E8D0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6B309DBB-EB87-41A1-87C9-DA775D9E8D0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67622223-7828-44E0-9F4D-5DB809ECD1D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67622223-7828-44E0-9F4D-5DB809ECD1D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67622223-7828-44E0-9F4D-5DB809ECD1D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67622223-7828-44E0-9F4D-5DB809ECD1D1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
