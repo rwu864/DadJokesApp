@@ -1,4 +1,5 @@
-﻿using DadJokesApp.Api.Common;
+﻿using AutoFixture;
+using DadJokesApp.Api.Common;
 using DadJokesApp.Api.Controllers;
 using DadJokesApp.Api.Services;
 using FakeItEasy;
@@ -9,12 +10,19 @@ namespace DadJokesApp.Api.Tests.ControllerTests;
 
 public class JokesControllerTests
 {
+    private readonly IFixture _fixture;
+
+    public JokesControllerTests()
+    {
+        _fixture = new Fixture();
+    }
+
     [Fact]
     public async Task GetRandomJoke_ReturnsOk_WhenJokeServiceSucceeds()
     {
         // Arrange
         var fakeService = A.Fake<IJokeService>();
-        var expectedJoke = Guid.NewGuid().ToString();
+        var expectedJoke = _fixture.Create<string>();
         A.CallTo(() => fakeService.GetRandomJokeAsync())
             .Returns(ServiceResult<string>.Ok(expectedJoke));
 
