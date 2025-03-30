@@ -29,7 +29,7 @@ public class JokeServiceTests
         var expectedJoke = _fixture.Create<string>();
         var mockHandler = new MockHttpMessageHandler(new HttpResponseMessage(HttpStatusCode.OK)
         {
-            Content = JsonContent.Create(new RandomDadJokeResult { Joke = expectedJoke })
+            Content = JsonContent.Create(new RandomDadJokeResponse { Joke = expectedJoke })
         });
 
         var httpClient = new HttpClient(mockHandler)
@@ -107,7 +107,7 @@ public class JokeServiceTests
         // Arrange
         var mockHandler = new MockHttpMessageHandler(new HttpResponseMessage(HttpStatusCode.OK)
         {
-            Content = JsonContent.Create(new RandomDadJokeResult { Joke = string.Empty })
+            Content = JsonContent.Create(new RandomDadJokeResponse { Joke = string.Empty })
         });
 
         var httpClient = new HttpClient(mockHandler)
