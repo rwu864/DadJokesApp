@@ -32,12 +32,27 @@ public class JokeService : IJokeService
             _logger.LogError("Joke API responded with {StatusCode}", response.StatusCode);
             return ServiceResult<string>.Fail();
         }
-
-        var joke = await response.Content.ReadFromJsonAsync<RandomDadJokeResponse>();
-
-        if (joke == null || string.IsNullOrWhiteSpace(joke.Joke))
+        
+        RandomDadJokeResponse? joke; 
+        try
         {
-            _logger.LogError("Failed to deserialize joke response. Response: {Response}", response);
+            joke = await response.Content.ReadFromJsonAsync<RandomDadJokeResponse>();
+
+            if (joke == null || string.IsNullOrWhiteSpace(joke.Joke))
+            {
+                _logger.LogError("Failed to deserialize joke response. Response: {Response}", response);
+                return ServiceResult<string>.Fail();
+            }
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError
+            (
+                ex,
+                "Exception while deserializing joke response. Response: {Response}",
+                response
+            );
+
             return ServiceResult<string>.Fail();
         }
 
@@ -68,11 +83,26 @@ public class JokeService : IJokeService
             return ServiceResult<JokeSearchModel>.Fail();
         }
 
-        var searchResult = await response.Content.ReadFromJsonAsync<SearchDadJokeResponse>();
-
-        if (searchResult == null)
+        SearchDadJokeResponse? searchResult;
+        try
         {
-            _logger.LogError("Failed to deserialize joke search response. Response: {Response}", response);
+            searchResult = await response.Content.ReadFromJsonAsync<SearchDadJokeResponse>();
+
+            if (searchResult == null)
+            {
+                _logger.LogError("Deserialization returned null for joke search response. Response: {Response}", response);
+                return ServiceResult<JokeSearchModel>.Fail();
+            }
+        }
+        catch(Exception ex)
+        {
+            _logger.LogError
+            (
+                ex, 
+                "Exception while deserializing joke search response. Response: {Response}", 
+                response
+            );
+            
             return ServiceResult<JokeSearchModel>.Fail();
         }
 
@@ -109,7 +139,7 @@ public class JokeService : IJokeService
         });
     }
 
-    private string HighlightSearchTerm(string text, string term)
+    private static string HighlightSearchTerm(string text, string term)
     {
         if (string.IsNullOrWhiteSpace(term))
             return text;
