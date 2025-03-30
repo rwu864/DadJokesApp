@@ -22,6 +22,17 @@ public class JokesController (IJokeService jokeService) : ControllerBase
     [HttpGet("search")]
     public async Task<ActionResult<JokeSearchModel>> SearchJokes([FromQuery] string term)
     {
+        if (string.IsNullOrWhiteSpace(term))
+        {
+            return BadRequest(new ProblemDetails
+            {
+                Title = "Invalid search parameter",
+                Detail = "Search term cannot be empty or whitespace",
+                Status = StatusCodes.Status400BadRequest,
+                Instance = HttpContext.Request.Path
+            });
+        }
+
         var result = await jokeService.SearchJokesAsync(term);
 
         if (!result.Success)

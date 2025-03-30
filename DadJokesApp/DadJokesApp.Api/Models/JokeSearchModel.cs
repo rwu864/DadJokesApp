@@ -1,6 +1,4 @@
-﻿using DadJokesApp.Api.Services;
-
-namespace DadJokesApp.Api.Models;
+﻿namespace DadJokesApp.Api.Models;
 
 public class JokeSearchModel
 {

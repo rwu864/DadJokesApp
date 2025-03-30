@@ -108,6 +108,7 @@ public class JokeService : IJokeService
             LongJokes = longJokes
         });
     }
+
     private string HighlightSearchTerm(string text, string term)
     {
         if (string.IsNullOrWhiteSpace(term))
