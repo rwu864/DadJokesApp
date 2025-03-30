@@ -1,4 +1,5 @@
-﻿using DadJokesApp.Api.Services;
+﻿using DadJokesApp.Api.Models;
+using DadJokesApp.Api.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DadJokesApp.Api.Controllers;
@@ -10,14 +11,24 @@ public class JokesController (IJokeService jokeService) : ControllerBase
     [HttpGet("random")]
     public async Task<ActionResult<string>> GetRandomJoke()
     {
-        var serviceResult = await jokeService.GetRandomJokeAsync();
+        var result = await jokeService.GetRandomJokeAsync();
 
-        if (!serviceResult.Success)
+        if (!result.Success)
             return JokeServiceError();
 
-        return Ok(serviceResult.Value);
+        return Ok(result.Value);
     }
-    
+
+    [HttpGet("search")]
+    public async Task<ActionResult<JokeSearchModel>> SearchJokes([FromQuery] string term)
+    {
+        var result = await jokeService.SearchJokesAsync(term);
+
+        if (!result.Success)
+            return JokeServiceError();
+
+        return Ok(result.Value);
+    }
 
     private ActionResult JokeServiceError(string? errorMessage = "Unable to fetch a joke at this time.") 
         => Problem
